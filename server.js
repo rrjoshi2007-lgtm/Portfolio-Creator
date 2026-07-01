@@ -10,6 +10,10 @@ app.use('/back.jpg', express.static(__dirname + '/back.jpg'));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
+// Safely serve any HTML page requested by the application
+app.get("/:page.html", (req, res) => {
+    res.sendFile(__dirname + "/" + req.params.page + ".html");
+});
 app.post("/submit", (req, res) => {
     const data = req.body;
     const id = data.name.toLowerCase().replace(" ", "");
