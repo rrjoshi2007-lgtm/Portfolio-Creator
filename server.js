@@ -7,6 +7,9 @@ app.use(express.json());
 app.use('/style.css', express.static(__dirname + '/style.css'));
 app.use('/app.js', express.static(__dirname + '/app.js'));
 app.use('/back.jpg', express.static(__dirname + '/back.jpg'));
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+});
 app.post("/submit", (req, res) => {
     const data = req.body;
     const id = data.name.toLowerCase().replace(" ", "");
